@@ -1,0 +1,20 @@
+{
+  "version": "0.10.7",
+  "lerna": "2.0.0",
+  "npmClient": "yarn",
+  "npmClientArgs": [
+    "--no-lockfile"
+  ],
+  "useWorkspaces": true,
+  "packages": [
+    "pkg/*"
+  ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.md",
+        "*.txt"
+      ]
+    }
+  }
+}

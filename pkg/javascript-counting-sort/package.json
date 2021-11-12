@@ -1,0 +1,31 @@
+{
+  "name": "countingsort",
+  "version": "0.1.0",
+  "description": "Sort an array of integers using Counting sort (where you only have integers and the min and max are known)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arnorhs/javascript-counting-sort.git"
+  },
+  "keywords": [
+    "sort",
+    "array",
+    "count",
+    "counting",
+    "countingsort",
+    "sort",
+    "countsort"
+  ],
+  "devDependencies": {
+    "mocha": "1.9.x"
+  },
+  "author": "Arnor Heidar Sigurdsson <arnorhs@gmail.com> (http://arnorhs.com/)",
+  "license": "MIT",
+  "readmeFilename": "readme.md",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}
