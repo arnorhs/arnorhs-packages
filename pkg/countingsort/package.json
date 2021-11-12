@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/arnorhs/javascript-counting-sort.git"
+    "url": "git://github.com/arnorhs/arnorhs-packages"
   },
   "keywords": [
     "sort",
@@ -22,7 +22,7 @@
   "devDependencies": {
     "mocha": "1.9.x"
   },
-  "author": "Arnor Heidar Sigurdsson <arnorhs@gmail.com> (http://arnorhs.com/)",
+  "author": "Arnor Heidar Sigurdsson <arnorhs@gmail.com> (https://arnorhs.dev/)",
   "license": "MIT",
   "readmeFilename": "readme.md",
   "dependencies": {
