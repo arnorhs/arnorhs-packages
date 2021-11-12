@@ -20,12 +20,9 @@
     "countsort"
   ],
   "devDependencies": {
-    "mocha": "1.9.x"
+    "jest": "^27.3.1"
   },
   "author": "Arnor Heidar Sigurdsson <arnorhs@gmail.com> (https://arnorhs.dev/)",
   "license": "MIT",
-  "readmeFilename": "readme.md",
-  "dependencies": {
-    "jest": "^27.3.1"
-  }
+  "readmeFilename": "readme.md"
 }

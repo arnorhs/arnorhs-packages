@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "test": "mocha"
+    "test": "jest"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
@@ -23,7 +23,7 @@
     "tslib": "^2.3.1",
     "typescript": "4.4.4",
     "bnch": ">= 0.0.3",
-    "mocha": "~1.10.0"
+    "jest": "*"
   },
   "description": "Sorted Array - uses binary search for fast insertion / reading",
   "dependencies": {

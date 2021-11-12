@@ -36,10 +36,18 @@ const overwrite = {
     url: 'ssh://git@github.com/arnorhs/arnorhs-packages.git',
     directory: 'pkg/$NAME'
   },
+  devDependencies: {
+    jest: '*',
+  },
+  scripts: {
+    test: 'jest'
+  },
   author,
   main,
   module
 }
+
+delete pkg.devDependencies.mocha
 
 const merged = JSON.stringify(merge.all([tpl, pkg, overwrite]), null, 2)
 
