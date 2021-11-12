@@ -2,6 +2,7 @@ name: CI
 on: push
 jobs:
   test:
+    name: 'Run tests on all packages'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
