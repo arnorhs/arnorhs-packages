@@ -13,6 +13,9 @@ fi
 
 echo "importing $REPO to pkg/$NAME"
 
+mkdir -p pkg/$NAME
+cp -rfp shared/pkg-template/* pkg/$NAME/.
+
 npx degit --force $REPO pkg/$NAME
 
 node -e "
