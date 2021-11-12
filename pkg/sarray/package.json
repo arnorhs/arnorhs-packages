@@ -31,7 +31,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/arnorhs/node-sarray.git"
+    "url": "ssh://git@github.com/arnorhs/arnorhs-packages.git",
+    "directory": "pkg/sarray"
   },
   "keywords": [
     "sort",
@@ -51,5 +52,8 @@
     "email": "arnorhs@gmail.com",
     "url": "https://arnorhs.dev"
   },
-  "readmeFilename": "readme.md"
+  "readmeFilename": "readme.md",
+  "publishConfig": {
+    "access": "public"
+  }
 }
