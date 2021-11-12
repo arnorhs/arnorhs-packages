@@ -22,7 +22,23 @@ const tpl = require('./shared/pkg-template/package.json')
 const { author } = require('./package.json')
 const { main, module } = tpl
 
-const merged = JSON.stringify(merge.all([tpl, pkg, { author, main, module }]), null, 2)
+// overwrite config
+const overwrite = {
+  // for lerna
+  publishConfig: {
+    access: 'public'
+  },
+  repository: {
+    type: 'git',
+    url: 'ssh://git@github.com/arnorhs/arnorhs-packages.git',
+    directory: 'pkg/$NAME'
+  },
+  author,
+  main,
+  module
+}
+
+const merged = JSON.stringify(merge.all([tpl, pkg, overwrite]), null, 2)
 
 fs.writeFileSync('./pkg/$NAME/package.json', merged, { encoding: 'utf-8' })
 "
