@@ -16,5 +16,8 @@
     "name": "Arnor Heidar Sigurdsson",
     "email": "arnorhs@gmail.com",
     "url": "https://arnorhs.dev"
+  },
+  "dependencies": {
+    "typescript": "^4.4.4"
   }
 }
