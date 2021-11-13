@@ -17,7 +17,7 @@ export default {
       sourcemap: false,
     },
   ],
-  external: Object.keys(packageJson.dependencies),
+  external: Object.keys(packageJson.dependencies ?? {}),
   plugins: [
     resolve({ preferBuiltins: true }),
     commonjs(),

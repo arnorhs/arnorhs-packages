@@ -1,5 +1,6 @@
+import { sortedSetFromArray } from '../lib/sortedSetFromArray'
 import { Comparator } from 'types'
-import { SortedSet } from '../SortedSet'
+import { SortedSet } from '../lib/SortedSet'
 
 const testArrayCorrectness = <T>(
   g: () => SortedSet<T>,
@@ -7,16 +8,16 @@ const testArrayCorrectness = <T>(
   expectedCmp?: Comparator<T>,
   expectedArray?: T[],
 ) => {
-  it('should be an array', function () {
+  it('should be an array', () => {
     expect(Array.isArray(g())).toBeTruthy()
   })
 
-  it(`to have ${expectedLength} length`, function () {
+  it(`to have ${expectedLength} length`, () => {
     expect(g().length).toStrictEqual(expectedLength)
   })
 
   if (expectedCmp) {
-    it('should have a comparator', function () {
+    it('should have a comparator', () => {
       expect(g().getComparator()).toBe(expectedCmp)
     })
   }
@@ -28,21 +29,21 @@ const testArrayCorrectness = <T>(
   }
 }
 
-describe('Object behaves like a normal array', function () {
+describe('Object behaves like a normal array', () => {
   let ss: SortedSet<number>
 
-  describe('empty arguments', function () {
-    beforeEach(function () {
+  describe('empty arguments', () => {
+    beforeEach(() => {
       ss = new SortedSet()
     })
 
     testArrayCorrectness(() => ss)
   })
 
-  describe('empty array', function () {
+  describe('empty array', () => {
     let ss: SortedSet<number>
 
-    beforeEach(function () {
+    beforeEach(() => {
       ss = new SortedSet<number>()
       ss.push(...[])
     })
@@ -50,18 +51,18 @@ describe('Object behaves like a normal array', function () {
     testArrayCorrectness(() => ss, 0)
   })
 
-  describe('array with an item', function () {
+  describe('array with an item', () => {
     let ss: SortedSet<number>,
       arr = [7777],
       arrCopy = arr.slice(0)
-    beforeEach(function () {
+    beforeEach(() => {
       ss = new SortedSet()
       ss.push(...arr)
     })
     testArrayCorrectness(() => ss, 1, undefined, arrCopy)
   })
 
-  describe('array with 3 items', function () {
+  describe('array with 3 items', () => {
     let ss: SortedSet<number>,
       arr = [1337, 7777, 999],
       arrCopy = arr.slice(0)
@@ -73,8 +74,8 @@ describe('Object behaves like a normal array', function () {
   })
 })
 
-describe('SortedSet#push()', function () {
-  describe('into [3,2,1,0] a value of', function () {
+describe('SortedSet#push()', () => {
+  describe('into [3,2,1,0] a value of', () => {
     let ss: SortedSet<number>,
       arr = [3, 2, 1, 0]
 
@@ -90,15 +91,15 @@ describe('SortedSet#push()', function () {
       })
     })
 
-    describe('-100', function () {
-      it('should have index 0', function () {
+    describe('-100', () => {
+      it('should have index 0', () => {
         ss.push(-100)
         expect(ss.indexOf(-100)).toBe(0)
       })
     })
 
-    describe('1.5', function () {
-      it('should have index 2', function () {
+    describe('1.5', () => {
+      it('should have index 2', () => {
         ss.push(1.5)
 
         expect(ss.indexOf(1.5)).toBe(2)
@@ -143,4 +144,17 @@ describe('SortedSet index reference', () => {
       expect(ss[1]).toBe(last)
     })
   })
+})
+
+describe('sortedSetFromArray', () => {
+  let ss: SortedSet<number>,
+    arr = [1337, 7777, 999],
+    arrCopy = arr.slice(0)
+
+  beforeEach(() => {
+    ss = sortedSetFromArray<number>(arr)
+    ss.push(...arr)
+  })
+
+  testArrayCorrectness(() => ss, 3, undefined, arrCopy)
 })

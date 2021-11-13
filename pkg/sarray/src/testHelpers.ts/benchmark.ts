@@ -9,7 +9,7 @@ for (var i = 0; i < 100000; i++) {
 
 const needle = arr[(arr.length - arr.length / 4) << 0]
 
-const set = SortedArray.fromArray<number>(arr)
+const set = SortedArray.fromArray(arr)
 
 const suite = bnch()
 

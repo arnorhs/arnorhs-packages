@@ -1,5 +1,5 @@
-import { addArray, indexOf } from './lib/array-funcs'
-import { Comparator, ToStringable } from './types'
+import { addArray, indexOf } from './array-funcs'
+import { Comparator, ToStringable } from '../types'
 
 const getDefaultComparator =
   (): Comparator<ToStringable> =>

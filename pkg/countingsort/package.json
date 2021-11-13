@@ -2,9 +2,11 @@
   "name": "countingsort",
   "version": "0.1.0",
   "description": "Sort an array of integers using Counting sort (where you only have integers and the min and max are known)",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
-    "test": "jest src/__test__"
+    "test": "jest src/__test__",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
