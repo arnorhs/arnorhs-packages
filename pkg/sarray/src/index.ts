@@ -1,1 +1,2 @@
-export * from './SortedArray'
+export * from './lib/SortedArray'
+export * from './lib/types'

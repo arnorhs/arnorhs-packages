@@ -1,5 +1,5 @@
 import { Comparator } from 'sset'
-import { SortedArray } from '../SortedArray'
+import { SortedArray } from '../lib/SortedArray'
 
 const testArrayCorrectness = <T>(
   g: () => SortedArray<T>,
