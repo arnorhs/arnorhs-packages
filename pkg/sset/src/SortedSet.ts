@@ -1,5 +1,5 @@
 import { addArray, indexOf } from './lib/array-funcs'
-import { Comparator } from './types'
+import { Comparator, ToStringable } from './types'
 
 const getDefaultComparator =
   (): Comparator<ToStringable> =>
@@ -9,11 +9,6 @@ const getDefaultComparator =
 
     return aa.localeCompare(bb)
   }
-
-interface ToStringable {
-  toString: () => string
-  toLocaleString: () => string
-}
 
 export class SortedSet<T extends ToStringable> extends Array<T> {
   cmp: Comparator<T>

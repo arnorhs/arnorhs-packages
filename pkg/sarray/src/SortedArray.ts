@@ -1,10 +1,18 @@
-import SortedSet from 'sset'
+import { SortedSet, Comparator } from 'sset'
 
-class SortedArray extends SortedSet {
-  addOne(item) {
-    var idx = this.indexOf(item),
-      x = idx < 0 ? -idx - 1 : idx
-    this.items.splice(x, 0, item)
-    return x
+class SortedArray<T> extends SortedSet<T> {
+  public push(...items: T[]): number {
+    for (let i = items.length - 1; i >= 0; i--) {
+      addOne(this, items[i])
+    }
+
+    return this.length
   }
+}
+
+export const addOne = <T>(arr: SortedArray<T>, item: T) => {
+  const idx = arr.indexOf(item)
+  const x = idx < 0 ? -idx - 1 : idx
+  arr.splice(x, 0, item)
+  return arr
 }
