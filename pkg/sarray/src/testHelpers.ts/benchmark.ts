@@ -1,17 +1,17 @@
-var bnch = require('bnch'),
-  SortedArray = require('../')
+import bnch from 'bnch'
+import { SortedArray } from '../SortedArray'
 
-var arr = []
+const arr: number[] = []
 
 for (var i = 0; i < 100000; i++) {
   arr.push((Math.random() * 100000) << 0)
 }
 
-var needle = arr[(arr.length - arr.length / 4) << 0]
+const needle = arr[(arr.length - arr.length / 4) << 0]
 
-var set = SortedArray(arr)
+const set = SortedArray.fromArray<number>(arr)
 
-var suite = bnch()
+const suite = bnch()
 
 suite.add('array dumb find', function () {
   for (var i = 0; i < arr.length; i++) {
@@ -21,8 +21,4 @@ suite.add('array dumb find', function () {
 
 suite.add('array indexOf', function () {
   arr.indexOf(needle)
-})
-
-suite.add('sorted array find', function () {
-  set.contains(needle)
 })

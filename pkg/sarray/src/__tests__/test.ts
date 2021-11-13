@@ -1,46 +1,146 @@
-import SortedArray from '../'
-import assert from 'assert'
+import { Comparator } from 'sset'
+import { SortedArray } from '../SortedArray'
 
-// check that sorting is correct after adding random items
-// check that sorting is correct
-describe('inserting', function () {
-  describe('into 3,2,2,0 a value of', function () {
-    var ss
-    beforeEach(function () {
-      ss = SortedArray([3, 2, 2, 0])
+const testArrayCorrectness = <T>(
+  g: () => SortedArray<T>,
+  expectedLength: number = 0,
+  expectedCmp?: Comparator<T>,
+  expectedArray?: T[],
+) => {
+  it('should be an array', function () {
+    expect(Array.isArray(g())).toBeTruthy()
+  })
+
+  it(`to have ${expectedLength} length`, function () {
+    expect(g().length).toStrictEqual(expectedLength)
+  })
+
+  if (expectedCmp) {
+    it('should have a comparator', function () {
+      expect(g().getComparator()).toBe(expectedCmp)
     })
-    describe('7', function () {
-      it('should have index 4', function () {
-        ss.add(7)
-        insertAssert(ss.indexOf(7), 4)
+  }
+
+  if (expectedArray) {
+    it('is the same as a cloned array', () => {
+      expect([...g()]).toStrictEqual(expectedArray)
+    })
+  }
+}
+
+describe('Object behaves like a normal array', function () {
+  let ss: SortedArray<number>
+
+  describe('empty arguments', function () {
+    beforeEach(function () {
+      ss = new SortedArray()
+    })
+
+    testArrayCorrectness(() => ss)
+  })
+
+  describe('empty array', function () {
+    let ss: SortedArray<number>
+
+    beforeEach(function () {
+      ss = new SortedArray<number>()
+      ss.push(...[])
+    })
+
+    testArrayCorrectness(() => ss, 0)
+  })
+
+  describe('array with an item', function () {
+    let ss: SortedArray<number>,
+      arr = [7777],
+      arrCopy = arr.slice(0)
+    beforeEach(function () {
+      ss = new SortedArray()
+      ss.push(...arr)
+    })
+    testArrayCorrectness(() => ss, 1, undefined, arrCopy)
+  })
+
+  describe('array with 3 items', function () {
+    let ss: SortedArray<number>,
+      arr = [1337, 7777, 999],
+      arrCopy = arr.slice(0)
+    beforeEach(() => {
+      ss = new SortedArray()
+      ss.push(...arr)
+    })
+    testArrayCorrectness(() => ss, 3, undefined, arrCopy)
+  })
+})
+
+describe('SortedArray#push()', function () {
+  describe('into [3,2,1,0] a value of', function () {
+    let ss: SortedArray<number>,
+      arr = [3, 2, 1, 0]
+
+    beforeEach(() => {
+      ss = new SortedArray()
+      ss.push(...arr)
+    })
+
+    describe('7', () => {
+      it('should be at the correct index', () => {
+        ss.push(7)
+        expect(ss.indexOf(7)).toBe(4)
       })
     })
+
     describe('-100', function () {
       it('should have index 0', function () {
-        ss.add(-100)
-        insertAssert(ss.indexOf(-100), 0)
+        ss.push(-100)
+        expect(ss.indexOf(-100)).toBe(0)
       })
     })
+
     describe('1.5', function () {
-      it('should have index 1', function () {
-        ss.add(1.5)
-        insertAssert(ss.indexOf(1.5), 1)
+      it('should have index 2', function () {
+        ss.push(1.5)
+
+        expect(ss.indexOf(1.5)).toBe(2)
       })
     })
-    describe('2', function () {
-      it('should have index between 1-2 inclusive', function () {
-        ss.add(2)
-        var idx = ss.indexOf(2)
-        assert(idx >= 1 && idx <= 2, 'Inserted value is not in the right position: ' + idx)
-        assert(ss.items.length === 5, 'Inserted value is not the correct length')
+
+    describe('2', () => {
+      it('should have index 2', () => {
+        ss.push(2)
+        expect(ss.indexOf(2)).toBe(2)
+      })
+
+      it('should not replace exiting value', () => {
+        ss.push(2)
+
+        expect(ss.length).toBe(5)
       })
     })
   })
 })
 
-var insertAssert = function (value, expected) {
-  assert(
-    value === expected,
-    'Was not inserted correctly, expected: ' + expected + ', but was: ' + value,
-  )
-}
+describe('SortedArray index reference', () => {
+  const first = 1111,
+    last = 2222
+
+  describe('with a ordered list', () => {
+    const ss = new SortedArray<number>()
+    ss.push(...[first, last])
+
+    it('should have the correct order', () => {
+      expect(ss[0]).toBe(first)
+      expect(ss[1]).toBe(last)
+    })
+  })
+
+  describe('with an unordered list', () => {
+    const ss = new SortedArray<number>()
+    ss.push(...[last, first])
+
+    it('should have the correct order', () => {
+      expect(ss[0]).toBe(first)
+      expect(ss[1]).toBe(last)
+    })
+  })
+})
