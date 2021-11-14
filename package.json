@@ -6,10 +6,12 @@
     "test": "yarn lerna run test",
     "sset": "yarn workspace sset",
     "sarray": "yarn workspace sarray",
-    "countingsort": "yarn workspace countingsort"
+    "countingsort": "yarn workspace countingsort",
+    "bnch": "yarn workspace bnch"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",
+    "degit": "^2.8.4",
     "lerna": "^4.0.0"
   },
   "workspaces": [

@@ -1,0 +1,52 @@
+{
+  "name": "bnch",
+  "version": "0.0.3",
+  "private": true,
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@types/jest": "*",
+    "@types/node": "^16.11.4",
+    "jest": "^27.3.1",
+    "rollup": "^2.58.0",
+    "rollup-plugin-ts": "^1.4.7",
+    "ts-node": "*",
+    "tslib": "^2.3.1",
+    "typescript": "4.4.4"
+  },
+  "description": "A very simple (yet another) node benchmark utility",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/arnorhs/arnorhs-packages.git",
+    "directory": "pkg/bnch"
+  },
+  "keywords": [
+    "bench",
+    "bnch",
+    "benchmark",
+    "benchmarks",
+    "performance",
+    "measure"
+  ],
+  "author": {
+    "name": "Arnor Heidar Sigurdsson",
+    "email": "arnorhs@gmail.com",
+    "url": "https://arnorhs.dev"
+  },
+  "readmeFilename": "README.md",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/arnorhs/arnorhs-packages/tree/master/pkg/bnch"
+}

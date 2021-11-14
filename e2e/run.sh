@@ -10,5 +10,6 @@ run() {
 run 'countingsort'
 run 'sarray'
 run 'sset'
+run 'bnch'
 
 unset -f run
