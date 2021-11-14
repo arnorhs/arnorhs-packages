@@ -53,7 +53,7 @@
     "email": "arnorhs@gmail.com",
     "url": "https://arnorhs.dev"
   },
-  "readmeFilename": "readme.md",
+  "readmeFilename": "README.md",
   "publishConfig": {
     "access": "public"
   }
