@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "publish": "yarn lerna publish",
     "test": "yarn lerna run test",
     "sset": "yarn workspace sset",
     "sarray": "yarn workspace sarray",
