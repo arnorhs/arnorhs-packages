@@ -36,6 +36,7 @@ const overwrite = {
   publishConfig: {
     access: 'public'
   },
+  private: false,
   repository: {
     type: 'git',
     url: 'ssh://git@github.com/arnorhs/arnorhs-packages.git',

@@ -1,7 +1,7 @@
 {
   "name": "bnch",
   "version": "0.0.3",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
