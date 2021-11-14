@@ -1,6 +1,6 @@
 {
   "name": "sset",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -16,16 +16,16 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "@types/node": "^16.11.4",
     "@types/jest": "*",
+    "@types/node": "^16.11.4",
+    "bnch": ">= 0.0.3",
+    "deep-equal": "~0.0.0",
     "jest": "^27.3.1",
     "rollup": "^2.58.0",
     "rollup-plugin-ts": "^1.4.7",
     "ts-node": "*",
     "tslib": "^2.3.1",
-    "typescript": "4.4.4",
-    "deep-equal": "~0.0.0",
-    "bnch": ">= 0.0.3"
+    "typescript": "4.4.4"
   },
   "description": "Sorted Set in javascript for node that uses binary search for maintaining sort order",
   "dependencies": {
