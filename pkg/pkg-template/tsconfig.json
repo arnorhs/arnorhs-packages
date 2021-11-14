@@ -3,13 +3,16 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "ESNext",
-    "strict": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "strict": false,
     "moduleResolution": "node",
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "module": "CommonJS",
-    "rootDir": "./"
+    "rootDir": "./",
+    "baseUrl": "./src"
   },
-  "include": ["./pkg/*/src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,15 +1,14 @@
 var bnch = require('bnch'),
-    SortedArray = require('./');
+    SortedSet = require('../');
 
 var arr = [];
-
 for (var i = 0; i < 100000; i++) {
     arr.push((Math.random() * 100000) << 0);
 }
 
 var needle = arr[(arr.length - arr.length / 4) << 0];
 
-var set = SortedArray(arr);
+var set = SortedSet(arr);
 
 var suite = bnch();
 
@@ -23,7 +22,7 @@ suite.add("array indexOf", function() {
     arr.indexOf(needle);
 });
 
-suite.add("sorted array find", function() {
+suite.add("sorted set find", function() {
     set.contains(needle);
 });
 

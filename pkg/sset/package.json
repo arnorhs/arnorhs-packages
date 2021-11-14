@@ -1,6 +1,6 @@
 {
-  "name": "sarray",
-  "version": "0.0.5",
+  "name": "sset",
+  "version": "0.0.4",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -11,46 +11,42 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "test": "jest"
+    "test": "jest src"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/node": "^16.11.4",
     "@types/jest": "*",
-    "jest": "*",
+    "jest": "^27.3.1",
     "rollup": "^2.58.0",
     "rollup-plugin-ts": "^1.4.7",
     "ts-node": "*",
     "tslib": "^2.3.1",
     "typescript": "4.4.4",
-    "bnch": ">= 0.0.3",
-    "@babel/preset-typescript": "*",
-    "babel-jest": "*",
-    "@babel/core": "*",
-    "@babel/preset-env": "*"
+    "deep-equal": "~0.0.0",
+    "bnch": ">= 0.0.3"
   },
-  "description": "Sorted Array - uses binary search for fast insertion / reading",
+  "description": "Sorted Set in javascript for node that uses binary search for maintaining sort order",
   "dependencies": {
-    "sset": "*"
+    "binary-search": "~1.0.1"
   },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/arnorhs/arnorhs-packages.git",
-    "directory": "pkg/sarray"
+    "directory": "pkg/sset"
   },
   "keywords": [
+    "set",
     "sort",
     "sorted",
+    "sets",
+    "sset",
+    "sortedset",
+    "sortedsets",
+    "sortedarray",
     "array",
-    "arrays",
-    "binary",
-    "binarysearch",
-    "search",
-    "index",
-    "sorting",
-    "list",
-    "lists"
+    "arrays"
   ],
   "author": {
     "name": "Arnor Heidar Sigurdsson",

@@ -36,9 +36,6 @@ const overwrite = {
     url: 'ssh://git@github.com/arnorhs/arnorhs-packages.git',
     directory: 'pkg/$NAME'
   },
-  devDependencies: {
-    jest: '*',
-  },
   scripts: {
     test: 'jest'
   },

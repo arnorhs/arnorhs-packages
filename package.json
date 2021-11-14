@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "publish": "yarn lerna publish"
+    "publish": "yarn lerna publish",
+    "test": "yarn lerna run test",
+    "sset": "yarn workspace sset",
+    "sarray": "yarn workspace sarray",
+    "countingsort": "yarn workspace countingsort"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",
@@ -16,5 +20,8 @@
     "name": "Arnor Heidar Sigurdsson",
     "email": "arnorhs@gmail.com",
     "url": "https://arnorhs.dev"
+  },
+  "dependencies": {
+    "typescript": "^4.4.4"
   }
 }

@@ -8,5 +8,19 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install modules
         run: yarn
+      - name: Build packages
+        run: yarn lerna run build --ignore=template
       - name: Run tests
-        run: yarn lerna run test
+        run: yarn lerna run test --ignore=template
+  e2e-test:
+    name: 'Run e2e tests (importing of built packages)'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Build packages
+        run: yarn lerna run build --ignore=template
+      - name: Run tests
+        run: cd e2e && ./run.sh
+        
