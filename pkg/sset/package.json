@@ -1,6 +1,6 @@
 {
   "name": "sset",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/jest": "*",
     "@types/node": "^16.11.4",
-    "bnch": ">= 0.0.3",
+    "bnch": "^1.0.2",
     "deep-equal": "~0.0.0",
     "jest": "^27.3.1",
     "rollup": "^2.58.0",
