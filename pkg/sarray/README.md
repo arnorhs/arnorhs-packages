@@ -1,43 +1,37 @@
 # sarray - Sorted array in javascript
 
 Features:
-- Uses binary-sort to insert and search in array.
 
-Much faster than searching through a normal array, as per this (maybe unfair) benchmark:
-![benchmark](http://f.cl.ly/items/1t3V3o270O0E1s1N0X2m/Screen%20Shot%202013-05-23%20at%201.27.03%20AM.png)
+- Uses binary-sort to insert and search in array.
 
 ### Usage:
 
-```javascript
-var SortedArray = require('sarray');
+```typescript
+import { SortedArray } from 'sarray'
 
-var arr = SortedArray([5,4,2,1]);
+const arr = new SortedArray<number>()
+arr.push(...[5, 4, 2, 1, 4])
 
-arr.add(3);
-
-// arr will now contain 1, 2, 3, 4, 5
+// arr will now contain 1, 2, 4, 4, 5
 ```
 
 ### Custom comparator
 
-```javascript
-var arr = SortedArray(function(a, b) {
-    return a.val - b.val;
-});
+```typescript
+const arr = new SortedArray<{ val: number }>(({ number: a }, { number: b }) => a - b)
 
-arr.add({val: 5}, {val: 3});
+arr.push(...[{ val: 5 }, { val: 3 }])
 
 // arr now contains [{val: 3}, {val: 5}];
 ```
 
-### Further info:
-
-This class is actually a subclass of sorted set, except that it doesn't maintain uniqueness in the
-array, so take a look at https://github.com/arnorhs/node-sset for further info.
-
 ### Installation
 
-    npm install sarray
+```sh
+yarn add sarray
+# or
+npm install sarray
+```
 
 ### License
 
