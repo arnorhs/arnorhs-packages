@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "strict": true,
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "allowJs": true,
+    "rootDir": "../."
+  }
+}
