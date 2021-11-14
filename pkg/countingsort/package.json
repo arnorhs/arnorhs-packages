@@ -1,6 +1,6 @@
 {
   "name": "countingsort",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sort an array of integers using Counting sort (where you only have integers and the min and max are known)",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

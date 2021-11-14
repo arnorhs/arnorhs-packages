@@ -1,6 +1,6 @@
 {
   "name": "sarray",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -32,7 +32,7 @@
   },
   "description": "Sorted Array - uses binary search for fast insertion / reading",
   "dependencies": {
-    "sset": "^1.0.0"
+    "sset": "^1.0.1"
   },
   "repository": {
     "type": "git",
