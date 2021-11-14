@@ -8,9 +8,8 @@
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "module": "CommonJS",
-    "rootDir": "./",
-    "baseUrl": "./pkg/"
+    "rootDir": "./"
   },
-  "include": ["./pkg/src/**/*"],
+  "include": ["./pkg/*/src/**/*"],
   "exclude": ["node_modules"]
 }
