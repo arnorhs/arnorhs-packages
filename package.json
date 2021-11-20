@@ -7,7 +7,8 @@
     "sset": "yarn workspace sset",
     "sarray": "yarn workspace sarray",
     "countingsort": "yarn workspace countingsort",
-    "bnch": "yarn workspace bnch"
+    "bnch": "yarn workspace bnch",
+    "introsort": "yarn workspace introsort"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",
