@@ -7,10 +7,10 @@ run() {
   node $1/$1.js
 }
 
+run 'fi'
 run 'countingsort'
 run 'sarray'
 run 'sset'
 run 'bnch'
-run 'fi'
 
 unset -f run
