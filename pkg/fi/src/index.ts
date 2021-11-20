@@ -1,9 +1,5 @@
-import { sw } from './lib/switch'
-import { ternary } from './lib/ternary'
-import { fi } from './lib/fi'
+export * from './lib/switch'
+export * from './lib/ternary'
+export * from './lib/fi'
 
-const x = fi as any
-x.sw = sw
-x.ternary = ternary
-
-export default x
+export { fi as default } from './lib/fi'

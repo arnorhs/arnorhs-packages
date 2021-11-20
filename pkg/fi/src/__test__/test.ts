@@ -1,7 +1,4 @@
-import fi from '../index'
-
-const ternary = fi.ternary
-const sw = fi.sw
+import { fi, sw, ternary } from '../'
 
 describe('ternary', function () {
   describe('using functions', function () {
