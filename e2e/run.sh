@@ -11,5 +11,6 @@ run 'countingsort'
 run 'sarray'
 run 'sset'
 run 'bnch'
+run 'fi'
 
 unset -f run
