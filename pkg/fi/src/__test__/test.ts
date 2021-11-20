@@ -1,4 +1,7 @@
-import fi, { ternary, sw } from '../cjs'
+import fi from '../index'
+
+const ternary = fi.ternary
+const sw = fi.sw
 
 describe('ternary', function () {
   describe('using functions', function () {
