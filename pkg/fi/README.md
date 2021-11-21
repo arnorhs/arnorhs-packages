@@ -1,89 +1,96 @@
-### fi - Functional conditionals, top to bottom
+# fi - Functional conditionals
 
 With fi you can ignore the language constructs and write all your conditional logic in a functional way.
 
+## usage with Typescript
+
+```typescript
+import { fi } from 'fi'
+
+const myVar: string = fi(false, 'The dragon')
+  .elseif(
+    () => 1 == 2,
+    () => 'Vampire',
+  )
+  .else('Wargulf')
+  .ret()
+```
+
+## usage with javascript / CommonJS
+
 ```javascript
-var fi = require('fi');
+const { fi } = require('fi')
 
-var myVar = fi(false, "The dragon").
-            elsfi(function() { return 1==2; }, function() { return "Vampire"; }).
-            els("Wargulf").ret();
-
-// myVar is "Wargulf"
+const myVar = fi(false, 'The dragon')
+  .elseif(
+    () => 1 == 2,
+    () => 'Vampire',
+  )
+  .else('Wargulf')
+  .ret()
 ```
 
 ### Installation
 
 The library is distributed as an [npm module](https://npmjs.org/package/fi):
 
-    npm install fi
+```sh
+npm install fi
+```
 
-If you want to use this in the browser you can use [Browserify](https://github.com/substack/node-browserify) for all your npm needs.
+or
 
-I also plan to make a client side ready version, hit me up with a github issue if you're interested in seeing that happen sooner.
+```sh
+yarn add fi
+```
 
 ### Examples
 
 Basic if statement
 
-```javascript
-var myVar = fi(true, "flower puppy").ret(); // we need to add .ret() to get the value of a statement
+```typescript
+const getIfTrue = fi(true, 'flower puppy')
 
-// myVar is "flower puppy"
+// getIfTrue() returns "flower puppy"
 ```
 
-We can make it more interesting and add an else statement:
+We can make it more interesting and add an elseif & else statements:
 
-```javascript
-var myVar = fi(false, "flower puppy").els("space pedals").ret();
+```typescript
+const getIfTrue = fi(false, 'flower puppy')
+  .elseif(() => false, 'something else')
+  .else('space pedals')
 
-// myVar is "space pedals"
+// getIfTrue() returns 'space pedals'
 ```
 
 Even more interesting using an if-else statement as well:
 
-```javascript
-var myVar = fi(false, "flower puppy").elsfi(true, "human skin").els("space pedals").ret();
-
-// myVar is "human skin"
-```
-
 With a half completed if statment, we can also start chaining more stuff to it later
 
-```javascript
-var myif = fi(false, "flower puppy").elsfi(false, "human skin");
+```typescript
+const myif = fi(false, 'flower puppy').elseif(false, 'human skin')
 
 // do some other stuff, and add to the chain:
-var myVar = myif.els("crapware").ret();
+const myVar = myif.else('crapware')
 
 // myVar is "crapware"
 ```
 
-*Wait, this is not functional enough!*
-
-Ok, how about: any value passed into any fi conditional can be either a function, or a value
-
-```javascript
-var myVar = fi(function() { return 1 < 0; },
-              function() { return 300 / 0; }).
-            els(
-              function() { return 1337/7; }).ret();
-
-// myVar is 191
-```
+Any value passed into any fi conditional or return value can be a function
 
 Functions that don't meet a conditional are never executed, and conditionals that dont' meet a
 condition (like an else if conditional in an if statement evaluated as true) will also never
 get executed.
 
-### Oh, one more thing
+### Ternary
 
-Ternary operator:
+The ternary variant is not chainable and does not return a function
 
-```javascript
-var ternary = require('fi').ternary;
+```typescript
+import { ternary } from 'fi
 
-var myVar = ternary(function(){ return 1 > 4; }, function(){ return 15; }, function() { return 42; }).ret();
+const myVar = ternary(() => 1 > 4), () => 15, () => 42)
 
 // myVar is 42
 ```
@@ -91,14 +98,14 @@ var myVar = ternary(function(){ return 1 > 4; }, function(){ return 15; }, funct
 Switch statement using an object:
 
 ```javascript
-var sw = require('fi').sw;
+var sw = require('fi').sw
 
-var myVar = sw("Rainbow", {
-    red: "Redish",
-    green: "Greenish",
-    blue: "Blueish",
-    default: "Some color"
-}).ret();
+var myVar = sw('Rainbow', {
+  red: 'Redish',
+  green: 'Greenish',
+  blue: 'Blueish',
+  default: 'Some color',
+})
 
 // myVar is "Some color"
 ```
@@ -107,24 +114,19 @@ Switch statement using an array (so you can use functions as your keys):
 
 ```javascript
 var myVar = sw("Rainbow", [
-    function() { return "red"; }, "Redish",
-    function() { return "green"; }, function() { return "Random green"; },
-    function() { return "blue"; }, "Blueish",
-    function() { return "Some color"; } // our default
-}).ret();
+    () => "red", "Redish",
+    () => "green", () => "Random green",
+    () => "blue", "Blueish",
+    () => "Some color" // our default
+})
 
 // myVar is "Some color"
 ```
 
 ### But.. WHY?!
 
-1. Becuase somebody had to
-2. Functions are first class citizens in javascript, so why not make use of that
-3. It could potentially lead to some interesting use cases
-
-### Contributions:
-
-This library is pretty fresh and any pull requests or feature requests are welcome.
+1. I don't know
+2. It could potentially lead to some interesting use cases
 
 ### Author:
 

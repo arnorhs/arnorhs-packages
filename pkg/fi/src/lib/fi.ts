@@ -1,42 +1,41 @@
 import type { Cond, ValOrRet } from './helpers'
 import { retOrCall } from './helpers'
 
-export const fi = function <T>(cond: Cond, val: ValOrRet<T>): Statement<T> {
-  return new Statement(cond, val)
+interface Retter<T> {
+  (): T
+  else(val: ValOrRet<T>): Retter<T>
+  elseif(cond: Cond, val: ValOrRet<T>): Retter<T>
 }
 
-export class Statement<T> {
-  cond: boolean
-  val: T
-
-  constructor(cond: Cond, val: ValOrRet<T>) {
-    this.cond = retOrCall(cond)
-    this.val = retOrCall(val)
+const createRe = <T>(carry: T | undefined, cond: Cond, val: ValOrRet<T>): Retter<T> => {
+  const f = function () {
+    return carry ? carry : retOrCall(cond) ? retOrCall(val) : undefined
   }
 
-  else(val: ValOrRet<T>) {
-    if (this.cond) {
-      return this
-    }
+  const z = new Re(retOrCall(cond) ? retOrCall(val) : carry)
 
-    this.cond = true
-    this.val = retOrCall(val)
+  Object.assign(f, z)
+  Object.setPrototypeOf(f, Re.prototype)
 
-    return this
+  return f as unknown as Retter<T>
+}
+
+class Re<T = any> {
+  carry?: T
+
+  constructor(carry: T | undefined) {
+    this.carry = carry
   }
 
-  elseif(cond: ValOrRet<boolean>, val: ValOrRet<T>) {
-    if (this.cond) {
-      return this
-    }
-    this.cond = retOrCall(cond)
-    this.val = retOrCall(val)
-    return this
+  else(val: ValOrRet<T>): Retter<T> {
+    return createRe(this.carry, true, val)
   }
 
-  ret() {
-    if (this.cond) {
-      return this.val
-    }
+  elseif(cond: Cond, val: ValOrRet<T>): Retter<T> {
+    return createRe(this.carry, cond, val)
   }
+}
+
+export const fi = <T>(cond: Cond, val: ValOrRet<T>): Retter<T> => {
+  return createRe(undefined, cond, val)
 }
