@@ -9,7 +9,8 @@
     "countingsort": "yarn workspace countingsort",
     "bnch": "yarn workspace bnch",
     "introsort": "yarn workspace introsort",
-    "fi": "yarn workspace fi"
+    "fi": "yarn workspace fi",
+    "node-index": "yarn workspace node-index"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",
