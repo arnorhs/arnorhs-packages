@@ -7,6 +7,7 @@ run() {
   node $1/$1.js
 }
 
+run 'node-index'
 run 'fi'
 run 'countingsort'
 run 'sarray'
