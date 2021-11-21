@@ -1,6 +1,12 @@
-export type ValOrRet<T> = T | (() => T)
+export type ValOrRet<T = any> = T | (() => T)
 
-export const retOrCall = <T>(value: ValOrRet<T>): T => (value instanceof Function ? value() : value)
+export const retOrCall = <T>(value: ValOrRet<T>): T => {
+  if (value === undefined) {
+    return value as T
+  }
+
+  return value instanceof Function ? value() : value
+}
 
 export type Cond = ValOrRet<boolean>
 
