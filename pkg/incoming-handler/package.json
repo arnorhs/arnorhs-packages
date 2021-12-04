@@ -1,7 +1,8 @@
 {
   "name": "incoming-handler",
   "version": "1.0.9",
-  "private": true,
+  "description": "A library/framework to build a thing to respond to http requests",
+  "private": false,
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -25,5 +26,19 @@
     "ts-node": "*",
     "tslib": "^2.3.1",
     "typescript": "4.4.4"
+  },
+  "author": {
+    "name": "Arnor Heidar Sigurdsson",
+    "email": "arnorhs@gmail.com",
+    "url": "https://arnorhs.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/arnorhs/arnorhs-packages.git",
+    "directory": "pkg/incoming-handler"
+  },
+  "readmeFilename": "README.md",
+  "publishConfig": {
+    "access": "public"
   }
 }
