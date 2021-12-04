@@ -40,6 +40,10 @@ Sorted array. Basically keeps its sorting through additions. Internally uses [ss
 
 Once upon a time, there were no sets in javascript. Back then, this might have seemed useful
 
+### [incoming-handler](/pkg/incoming-handler)
+
+A thing to handle web requests
+
 ## Contributions
 
 Pull requests, bug reports etc are all welcome. Contribution guide: Be nice. Other than that,

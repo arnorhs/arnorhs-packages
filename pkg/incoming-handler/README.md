@@ -1,4 +1,4 @@
-# Request handler
+# Incoming handler
 
 Because who needs a name
 
@@ -13,13 +13,13 @@ server instance, or a lambda function or a cloudflare workers fetch handler
 ## Installation
 
 ```sh
-yarn add request-handler
+yarn add incoming-handler
 ```
 
 ## Example usage
 
 ```typescript
-import { Controller, createInstance } from 'request-handler'
+import { Controller, createInstance } from 'incoming-handler'
 import { fetchThing, saveThing } from './libs/my-example-thing-fetcher'
 
 class ThingController extends Controller {
