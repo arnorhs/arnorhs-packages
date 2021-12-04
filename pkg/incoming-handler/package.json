@@ -1,6 +1,6 @@
 {
   "name": "incoming-handler",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A library/framework to build a thing to respond to http requests",
   "private": false,
   "license": "MIT",
