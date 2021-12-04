@@ -1,4 +1,4 @@
-import { Controller, createInstance } from '../../pkg/request-handler/dist'
+import { Controller, createInstance } from '../../pkg/incoming-handler/dist'
 
 class Ctrl extends Controller {
   getSomething() {}

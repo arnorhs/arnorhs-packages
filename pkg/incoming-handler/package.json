@@ -1,5 +1,5 @@
 {
-  "name": "request-handler",
+  "name": "incoming-handler",
   "version": "1.0.9",
   "private": true,
   "license": "MIT",
