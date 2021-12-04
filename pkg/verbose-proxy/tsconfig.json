@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "declaration": true,
+    "declarationDir": "dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "rootDir": "./",
+    "baseUrl": "./src"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
