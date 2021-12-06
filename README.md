@@ -44,6 +44,11 @@ Once upon a time, there were no sets in javascript. Back then, this might have s
 
 A thing to handle web requests
 
+### [verbose-proxy](/pkg/verbose-proxy)
+
+A simple development server / proxy server / echo server that is useful for just seeing incoming and
+outgoing requests and responses in APIs etc
+
 ## Contributions
 
 Pull requests, bug reports etc are all welcome. Contribution guide: Be nice. Other than that,
