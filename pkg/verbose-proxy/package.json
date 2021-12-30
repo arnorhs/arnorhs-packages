@@ -1,6 +1,6 @@
 {
   "name": "verbose-proxy",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Debugging tool to just log out everything that comes in (optionally also proxy)",
   "private": false,
   "license": "MIT",

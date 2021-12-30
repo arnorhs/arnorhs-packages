@@ -1,6 +1,6 @@
 {
   "name": "countingsort",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "Sort an array of integers using Counting sort (where you only have integers and the min and max are known)",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -31,7 +31,7 @@
     "@types/jest": "*",
     "@types/node": "^16.11.4",
     "babel-jest": "*",
-    "bnch": "^1.0.11",
+    "bnch": "^1.0.13",
     "jest": "*",
     "rollup": "^2.58.0",
     "rollup-plugin-ts": "^1.4.7",
