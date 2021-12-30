@@ -11,7 +11,7 @@
     "introsort": "yarn workspace introsort",
     "fi": "yarn workspace fi",
     "node-index": "yarn workspace node-index",
-    "request-handler": "yarn workspace request-handler",
+    "incoming-handler": "yarn workspace incoming-handler",
     "verbose-proxy": "yarn workspace verbose-proxy"
   },
   "devDependencies": {
