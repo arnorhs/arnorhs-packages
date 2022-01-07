@@ -8,7 +8,6 @@ docsPath="./docs/src/pages"
 pkgPath="./pkg"
 packages=(./pkg/*/package.json)
 
-
 generatePage () {
   meta="$1"
   readmePath="$2"
@@ -21,6 +20,8 @@ generatePage () {
   echo '---' >> $docsTarget
   cat $readmePath >> $docsTarget
 }
+
+mkdir -p "$docsPath/pkg"
 
 for p in "${packages[@]}"
 do
