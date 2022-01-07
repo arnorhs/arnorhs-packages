@@ -12,7 +12,9 @@
     "fi": "yarn workspace fi",
     "node-index": "yarn workspace node-index",
     "incoming-handler": "yarn workspace incoming-handler",
-    "verbose-proxy": "yarn workspace verbose-proxy"
+    "verbose-proxy": "yarn workspace verbose-proxy",
+    "docs": "yarn workspace docs",
+    "build:docs": "./scripts/update-docs.sh && yarn docs build"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",
@@ -20,7 +22,8 @@
     "lerna": "^4.0.0"
   },
   "workspaces": [
-    "pkg/*"
+    "pkg/*",
+    "docs"
   ],
   "author": {
     "name": "Arnor Heidar Sigurdsson",
