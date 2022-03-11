@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "0.0.1",
+  "version": "1.0.15",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -12,7 +12,7 @@
     "@docsearch/react": "^1.0.0-alpha.28"
   },
   "devDependencies": {
-    "astro": "^0.22.5",
-    "@astrojs/renderer-preact": "^0.4.0"
+    "@astrojs/renderer-preact": "^0.4.0",
+    "astro": "^0.22.5"
   }
 }
