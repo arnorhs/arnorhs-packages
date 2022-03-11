@@ -1,6 +1,6 @@
 {
   "name": "fi",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
