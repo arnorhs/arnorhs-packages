@@ -2,6 +2,7 @@ import typescript from 'rollup-plugin-ts'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import packageJson from './package.json'
+import del from 'rollup-plugin-delete'
 
 const plugins = [resolve({ preferBuiltins: true }), commonjs()]
 
@@ -23,6 +24,7 @@ export default [
     external,
     plugins: [
       ...plugins,
+      del({ targets: 'dist/*' }),
       typescript({
         tsconfig: {
           ...require('./tsconfig.json').compilerOptions,
@@ -41,11 +43,11 @@ export default [
     input: `./src/adapters/${directory}/index.ts`,
     output: [
       {
-        file: `dist/adapters/${targetFile}.cjs`,
+        file: `dist/adapters/${targetFile}/index.cjs`,
         format: `cjs`,
       },
       {
-        file: `dist/adapters/${targetFile}.js`,
+        file: `dist/adapters/${targetFile}/index.js`,
         format: `esm`,
       },
     ],
@@ -57,7 +59,7 @@ export default [
           ...require('./tsconfig.json').compilerOptions,
           module: 'ESNext',
           declaration: true,
-          declarationDir: 'dist/adapters',
+          declarationDir: `dist/adapters/${targetFile}`,
         },
       }),
     ],
