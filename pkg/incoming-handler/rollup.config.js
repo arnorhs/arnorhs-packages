@@ -45,7 +45,7 @@ export default [
         format: `cjs`,
       },
       {
-        file: `dist/adapters/${targetFile}.esm.js`,
+        file: `dist/adapters/${targetFile}.js`,
         format: `esm`,
       },
     ],

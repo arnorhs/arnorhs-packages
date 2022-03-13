@@ -1,4 +1,4 @@
-import { nodeHttpAdapter } from '../../pkg/incoming-handler/dist/adapters/node.esm.js'
+import { nodeHttpAdapter } from '../../pkg/incoming-handler/dist/adapters/node.js'
 import { Controller, createInstance } from '../../pkg/incoming-handler/dist/index.esm.js'
 
 class Ctrl extends Controller {
