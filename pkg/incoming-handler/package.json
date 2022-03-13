@@ -24,6 +24,19 @@
       "require": "./dist/adapters/node/index.cjs"
     }
   },
+  "typesVersions": {
+    "*": {
+      "adapter-workers": [
+        "dist/adapters/workers/index.d.ts"
+      ],
+      "adapter-lambda": [
+        "dist/adapters/lambda/index.d.ts"
+      ],
+      "adapter-node": [
+        "dist/adapters/node/index.d.ts"
+      ]
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist"
