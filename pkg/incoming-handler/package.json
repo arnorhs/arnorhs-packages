@@ -7,10 +7,22 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "exports": {
-    ".": "./dist/index.js",
-    "./adapters/workers": "./dist/adapters/workers.js",
-    "./adapters/lambda": "./dist/adapters/lambda.js",
-    "./adapters/node": "./dist/adapters/node.js"
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js"
+    },
+    "./adapters/workers": {
+      "import": "./dist/adapters/workers.esm.js",
+      "require": "./dist/adapters/workers.js"
+    },
+    "./adapters/lambda": {
+      "import": "./dist/adapters/lambda.esm.js",
+      "require": "./dist/adapters/lambda.js"
+    },
+    "./adapters/node": {
+      "import": "./dist/adapters/node.esm.js",
+      "require": "./dist/adapters/node.js"
+    }
   },
   "sideEffects": false,
   "files": [
