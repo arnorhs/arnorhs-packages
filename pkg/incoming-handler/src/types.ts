@@ -1,4 +1,3 @@
-import { RequestAdapter } from 'RequestAdapter'
 import { RouteValues } from './router'
 
 export type Method =
@@ -37,7 +36,7 @@ export interface RequestHandlerOptions {
 export type RequestAdapterImpl = (
   controllers: Controller[],
   routeHandlers: RouteHandler[],
-) => () => unknown
+) => Function
 
 export abstract class Controller {}
 

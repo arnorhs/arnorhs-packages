@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "resolveJsonModule": true,
-    "module": "CommonJS",
     "allowJs": true,
     "rootDir": "../."
   }

@@ -3,13 +3,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import packageJson from './package.json'
 
-const plugins = [
-  resolve({ preferBuiltins: true }),
-  commonjs(),
-  typescript({
-    tsconfig: 'tsconfig.build.json',
-  }),
-]
+const plugins = [resolve({ preferBuiltins: true }), commonjs()]
 
 const external = Object.keys(packageJson.dependencies ?? {})
 
@@ -27,51 +21,45 @@ export default [
       },
     ],
     external,
-    plugins,
+    plugins: [
+      ...plugins,
+      typescript({
+        tsconfig: {
+          ...require('./tsconfig.json').compilerOptions,
+          module: 'ESNext',
+          declaration: true,
+          declarationDir: 'dist',
+        },
+      }),
+    ],
   },
-  {
-    input: './src/adapters/NodeHttpAdapter/index.ts',
+  ...[
+    ['NodeHttpAdapter', 'node'],
+    ['WorkersAdapter', 'workers'],
+    ['LambdaAdapter', 'lambda'],
+  ].map(([directory, targetFile]) => ({
+    input: `./src/adapters/${directory}/index.ts`,
     output: [
       {
-        file: 'dist/adapters/node.js',
-        format: 'cjs',
+        file: `dist/adapters/${targetFile}.cjs`,
+        format: `cjs`,
       },
       {
-        file: 'dist/adapters/node.esm.js',
-        format: 'esm',
+        file: `dist/adapters/${targetFile}.esm.js`,
+        format: `esm`,
       },
     ],
     external,
-    plugins,
-  },
-  {
-    input: './src/adapters/WorkersAdapter/index.ts',
-    output: [
-      {
-        file: 'dist/adapters/workers.js',
-        format: 'cjs',
-      },
-      {
-        file: 'dist/adapters/workers.esm.js',
-        format: 'esm',
-      },
+    plugins: [
+      ...plugins,
+      typescript({
+        tsconfig: {
+          ...require('./tsconfig.json').compilerOptions,
+          module: 'ESNext',
+          declaration: true,
+          declarationDir: 'dist/adapters',
+        },
+      }),
     ],
-    external,
-    plugins,
-  },
-  {
-    input: './src/adapters/LambdaAdapter/index.ts',
-    output: [
-      {
-        file: 'dist/adapters/lambda.js',
-        format: 'cjs',
-      },
-      {
-        file: 'dist/adapters/lambda.esm.js',
-        format: 'esm',
-      },
-    ],
-    external,
-    plugins,
-  },
+  })),
 ]

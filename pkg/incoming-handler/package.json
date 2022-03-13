@@ -4,24 +4,24 @@
   "description": "A library/framework to build a thing to respond to http requests",
   "private": false,
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./adapters/workers": {
       "import": "./dist/adapters/workers.esm.js",
-      "require": "./dist/adapters/workers.js"
+      "require": "./dist/adapters/workers.cjs"
     },
     "./adapters/lambda": {
       "import": "./dist/adapters/lambda.esm.js",
-      "require": "./dist/adapters/lambda.js"
+      "require": "./dist/adapters/lambda.cjs"
     },
     "./adapters/node": {
       "import": "./dist/adapters/node.esm.js",
-      "require": "./dist/adapters/node.js"
+      "require": "./dist/adapters/node.cjs"
     }
   },
   "sideEffects": false,
