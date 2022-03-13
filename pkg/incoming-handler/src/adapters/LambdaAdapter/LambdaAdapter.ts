@@ -1,6 +1,6 @@
 import { Method } from '../../types'
 import { RequestAdapter } from '../../RequestAdapter'
-import { HandlerContext, HandlerEvent, HandlerResponse } from '@netlify/functions'
+import type { HandlerContext, HandlerEvent, HandlerResponse } from '@netlify/functions'
 
 const hasPostBodyTypes = ['PUT', 'POST', 'PATCH']
 
