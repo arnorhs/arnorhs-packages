@@ -1,3 +1,4 @@
+// TODO: bring in the type from cloudflare's workers types package
 export interface FetchEvent {
   type: string
   request: Request
