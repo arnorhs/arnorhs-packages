@@ -6,6 +6,12 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./adapters/workers": "./dist/adapters/workers.js",
+    "./adapters/lambda": "./dist/adapters/lambda.js",
+    "./adapters/node": "./dist/adapters/node.js"
+  },
   "sideEffects": false,
   "files": [
     "dist"
