@@ -1,4 +1,4 @@
-import { Handler, HandlerContext, HandlerEvent } from '@netlify/functions'
+import type { Handler, HandlerContext, HandlerEvent } from '@netlify/functions'
 import { Controller } from '../../types'
 import { requestHandler } from '../../requestHandler'
 import { LambdaAdapter } from './LambdaAdapter'

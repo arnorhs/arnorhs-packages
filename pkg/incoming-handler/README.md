@@ -39,10 +39,11 @@ class ThingController extends Controller {
   }
 }
 
-const instance = createInstance({ controllers: [new ThingController()] })
+import { nodeHttpAdapter } from 'incoming-handler/adapter/node'
+const startServer = createInstance({ controllers: [new ThingController()], adapter: nodeHttpAdapter })
 
 // If you want to start a local node server:
-instance.startServer({
+startServer({
   host: 'localhost',
   port: 1337,
 })

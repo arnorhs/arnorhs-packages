@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "yarn lerna run test",
     "sset": "yarn workspace sset",
     "sarray": "yarn workspace sarray",
     "countingsort": "yarn workspace countingsort",
@@ -13,8 +12,11 @@
     "node-index": "yarn workspace node-index",
     "incoming-handler": "yarn workspace incoming-handler",
     "verbose-proxy": "yarn workspace verbose-proxy",
+
+    "test": "yarn lerna run test",
     "docs": "yarn workspace docs",
-    "build:docs": "./scripts/update-docs.sh && yarn docs build"
+    "build:docs": "./scripts/update-docs.sh && yarn docs build",
+    "e2e": "cd e2e && ./run.sh"
   },
   "devDependencies": {
     "deepmerge": "^4.2.2",

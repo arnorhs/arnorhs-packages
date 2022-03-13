@@ -1,3 +1,4 @@
+import { RequestAdapter } from 'RequestAdapter'
 import { RouteValues } from './router'
 
 export type Method =
@@ -30,7 +31,13 @@ export interface ActionParams<R extends RouteValues = RouteValues, BodyType = an
 
 export interface RequestHandlerOptions {
   controllers: Controller[]
+  adapter: RequestAdapterImpl
 }
+
+export type RequestAdapterImpl = (
+  controllers: Controller[],
+  routeHandlers: RouteHandler[],
+) => () => unknown
 
 export abstract class Controller {}
 
