@@ -21,6 +21,10 @@ export class WorkersAdapter extends RequestAdapter {
   }
 
   getPath() {
+    if (this.req.url.match(/^http[s]?:\/\//)) {
+      const url = new URL(this.req.url)
+      return url.pathname
+    }
     return this.req.url
   }
 

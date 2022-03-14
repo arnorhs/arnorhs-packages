@@ -1,4 +1,4 @@
-const { nodeHttpAdapter } = require('../../pkg/incoming-handler/dist/adapters/node.cjs')
+const { nodeHttpAdapter } = require('../../pkg/incoming-handler/dist/adapters/node/index.cjs')
 const { createInstance, Controller } = require('../../pkg/incoming-handler/dist/index.cjs')
 
 class Ctrl extends Controller {
