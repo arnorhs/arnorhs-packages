@@ -19,9 +19,13 @@ yarn add incoming-handler
 ## Example usage
 
 ```typescript
-import { Controller, createInstance } from 'incoming-handler'
+import { createInstance } from 'incoming-handler'
+import type { Controller, RequestAdapter, GET, POST, hook } from 'incoming-handler'
 import { fetchThing, saveThing } from './libs/my-example-thing-fetcher'
 
+@hook('beforeRespond', (adapter: RequestAdapter) => {
+  adapter.setHeader('X-Global-Header': 'always inject this')
+})
 class ThingController extends Controller {
   @GET('/thing/:id')
   async getThing({ params }) {
@@ -39,8 +43,9 @@ class ThingController extends Controller {
   }
 }
 
-import { nodeHttpAdapter } from 'incoming-handler/adapter/node'
-const startServer = createInstance({ controllers: [new ThingController()], adapter: nodeHttpAdapter })
+import { nodeHttpAdapter } from 'incoming-handler/adapter-node'
+const controllers = [ new ThingController() ]
+const startServer = createInstance({ controllers, adapter: nodeHttpAdapter })
 
 // If you want to start a local node server:
 startServer({
@@ -49,10 +54,10 @@ startServer({
 })
 
 // or exposing to lambda handler:
-export.handler = instance.getLambdaHandler()
+export.handler = createInstance({ controllers, adapter: lambdaAdapter })
 
 // or implementing a fetch event handler in cloudflare workers:
-addEventListener('fetch', instance.getFetchEventHandler())
+addEventListener('fetch', createInstance({ controllers, adapter: lambdaAdapter }))
 ```
 
 ## TODOs

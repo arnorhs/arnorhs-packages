@@ -1,7 +1,8 @@
 import { RequestHandlerOptions } from './types'
-import { getAllRouteHandlers } from './decorators'
+import { getAllHooks, getAllRouteHandlers } from './decorators'
 
 export const createInstance = ({ controllers, adapter }: RequestHandlerOptions) => {
   const routeHandlers = getAllRouteHandlers()
-  return adapter(controllers, routeHandlers)
+  const hooks = getAllHooks()
+  return adapter(controllers, { routeHandlers, hooks })
 }

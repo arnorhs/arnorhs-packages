@@ -1,4 +1,11 @@
+import { RequestAdapter } from './RequestAdapter'
 import { RouteValues } from './router'
+
+export interface Hook {
+  proto: Function
+  event: 'beforeRespond' | 'afterRespond'
+  hook: (adapter: RequestAdapter) => Promise<void>
+}
 
 export type Method =
   | 'CONNECT'
@@ -33,10 +40,12 @@ export interface RequestHandlerOptions {
   adapter: RequestAdapterImpl
 }
 
-export type RequestAdapterImpl = (
-  controllers: Controller[],
-  routeHandlers: RouteHandler[],
-) => Function
+export interface ImplementationContext {
+  routeHandlers: RouteHandler[]
+  hooks: Hook[]
+}
+
+export type RequestAdapterImpl = (controllers: Controller[], ctx: ImplementationContext) => Function
 
 export abstract class Controller {}
 
