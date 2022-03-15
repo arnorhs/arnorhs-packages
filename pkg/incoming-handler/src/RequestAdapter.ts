@@ -8,4 +8,5 @@ export abstract class RequestAdapter {
   abstract setHeader(key: string, val: string): void
   abstract setStatus(status: number): void
   abstract sendBody(payload: any): void
+  abstract hasBodyBeenSent(): boolean
 }

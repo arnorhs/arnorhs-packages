@@ -9,11 +9,16 @@ export class WorkersAdapter extends RequestAdapter {
   private readonly req: Request
   private status: number = 404
   private headers: { [key: string]: string } = {}
+  private bodySent = false
 
   constructor(event: FetchEvent) {
     super()
     this.event = event
     this.req = event.request
+  }
+
+  hasBodyBeenSent(): boolean {
+    return this.bodySent
   }
 
   getMethod() {
@@ -33,12 +38,17 @@ export class WorkersAdapter extends RequestAdapter {
   }
 
   sendBody(data: string) {
+    if (this.bodySent) {
+      throw new Error('you can only return a single response - response has already been sent')
+    }
+
     this.event.respondWith(
       new Response(data, {
         headers: this.headers,
         status: this.status,
       }),
     )
+    this.bodySent = true
   }
 
   setHeader(key: string, val: string) {

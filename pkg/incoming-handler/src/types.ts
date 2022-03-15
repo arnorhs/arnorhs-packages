@@ -1,5 +1,4 @@
 import { RequestAdapter } from './RequestAdapter'
-import { RouteValues } from './router'
 
 export interface Hook {
   proto: Function
@@ -25,14 +24,18 @@ export interface ParsedRoute {
   params: string[]
 }
 
-export interface ActionParams<R extends RouteValues = RouteValues, BodyType = any> {
+export interface ActionParams<R extends string | undefined = undefined, BodyType = any> {
   url: {
     pathname: string
     query: URLSearchParams
   }
   method: Method
   body: BodyType | undefined
-  params: R
+  params: RouteValues<R>
+}
+
+export type RouteValues<T extends string | undefined> = {
+  [key in T]: string
 }
 
 export interface RequestHandlerOptions {

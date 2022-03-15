@@ -14,6 +14,10 @@ export class NodeHttpAdapter extends RequestAdapter {
     this.res = res
   }
 
+  hasBodyBeenSent(): boolean {
+    return this.res.writable
+  }
+
   getMethod() {
     if (!this.req.method) {
       throw new Error('unknowable request method')

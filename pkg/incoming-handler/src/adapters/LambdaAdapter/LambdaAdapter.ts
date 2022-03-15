@@ -12,6 +12,10 @@ export class LambdaAdapter extends RequestAdapter {
     body: '',
   }
 
+  hasBodyBeenSent(): boolean {
+    return !!this.response.body
+  }
+
   constructor(event: HandlerEvent, context: HandlerContext) {
     super()
     this.event = event

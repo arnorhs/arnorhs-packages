@@ -16,64 +16,65 @@ export const requestHandler = async (
     .filter(({ route }) => pathMathesRoute(pathname, route))
     .filter(({ method }) => method === '*' || method === requestMethod)
 
+  // TODO: should this be completely in userland? probably?
   adapter.setHeader('Content-type', 'application/json')
 
   await callHooks(hooks, 'beforeRespond', adapter)
 
-  const respond = makeResponse(adapter)
+  const respond = makeResponder(adapter, hooks)
 
-  try {
-    if (!matchedHandler) {
-      return respond(404, 'not found')
-    }
-
-    const { proto, action, route } = matchedHandler
-
-    const controller = controllers.find((controller) => proto === Object.getPrototypeOf(controller))
-
-    if (!controller) {
-      throw new Error('missing controller for path ' + pathname)
-    }
-
-    const values = getPathParams(pathname, route)
-
-    const actionProps: ActionParams = {
-      url: {
-        // these two feel off
-        pathname,
-        query: new URLSearchParams(pathname),
-      },
-      params: values,
-      // IncomingMessage defines this as any string
-      method: requestMethod,
-      body,
-    }
-
-    let data
-    try {
-      // TODO better type somehow
-      data = await (controller as any)[action](actionProps)
-    } catch (e) {
-      // TODO: hook or something
-      return respond(500, {
-        error: 'Internal server error',
-      })
-    }
-
-    if (!data) {
-      return respond(requestMethod === 'POST' ? 201 : 204, '')
-    }
-
-    return respond(requestMethod === 'POST' ? 201 : 200, data)
-  } finally {
-    await callHooks(hooks, 'afterRespond', adapter)
+  if (!matchedHandler) {
+    return respond(404, 'not found')
   }
+
+  const { proto, action, route } = matchedHandler
+
+  const controller = controllers.find((controller) => proto === Object.getPrototypeOf(controller))
+
+  if (!controller) {
+    throw new Error('missing controller for path ' + pathname)
+  }
+
+  const values = getPathParams(pathname, route)
+
+  const actionProps: ActionParams = {
+    url: {
+      // these two feel off
+      pathname,
+      query: new URLSearchParams(pathname),
+    },
+    params: values,
+    // IncomingMessage defines this as any string
+    method: requestMethod,
+    body,
+  }
+
+  let data
+  try {
+    // TODO better type somehow
+    data = await (controller as any)[action](actionProps)
+  } catch (e) {
+    // TODO: hook or something
+    return respond(500, {
+      error: 'Internal server error',
+    })
+  }
+
+  if (!data) {
+    return respond(requestMethod === 'POST' ? 201 : 204, '')
+  }
+
+  return respond(requestMethod === 'POST' ? 201 : 200, data)
 }
 
-const makeResponse = (adapter: RequestAdapter) => (status: number, body: any) => {
-  adapter.setStatus(status)
-  adapter.sendBody(body ? JSON.stringify(body) : '')
-}
+const makeResponder =
+  (adapter: RequestAdapter, hooks: Hook[]) => async (status: number, body: any) => {
+    await callHooks(hooks, 'afterRespond', adapter)
+    if (!adapter.hasBodyBeenSent()) {
+      adapter.setStatus(status)
+      adapter.sendBody(body ? JSON.stringify(body) : '')
+    }
+  }
 
 const callHooks = async (hooks: Hook[], targetEvent: Hook['event'], adapter: RequestAdapter) => {
   // TODO: not doing anything with the target property -- so the hook gets used on every possible
