@@ -1,17 +1,18 @@
 import { requestHandler } from '../../requestHandler'
-import { Controller, RouteHandler } from '../../types'
+import { Controller, ImplementationContext } from '../../types'
 import { FetchEvent, FetchEventHandler } from './types'
 import { WorkersAdapter } from './WorkersAdapter'
 
 export const workersAdapter =
-  (controllers: Controller[], routeHandlers: RouteHandler[]) =>
+  (controllers: Controller[], ctx: ImplementationContext) =>
   (): FetchEventHandler =>
   (event: FetchEvent) => {
-    event.waitUntil(requestHandler(controllers, routeHandlers, new WorkersAdapter(event)))
+    // TOOD: headers
+    event.waitUntil(requestHandler(controllers, ctx, new WorkersAdapter(event)))
   }
 
 export const functionAdapter =
-  (controllers: Controller[], routeHandlers: RouteHandler[]) => (): FetchEventHandler =>
+  (controllers: Controller[], ctx: ImplementationContext) => (): FetchEventHandler =>
     async function onRequest(context) {
       let rez
       const adapter = new WorkersAdapter({
@@ -22,7 +23,7 @@ export const functionAdapter =
           rez = res
         },
       })
-      await requestHandler(controllers, routeHandlers, adapter)
+      await requestHandler(controllers, ctx, adapter)
 
       return rez
     }

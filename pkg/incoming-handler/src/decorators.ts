@@ -1,15 +1,34 @@
 import { AcceptedMethod } from '.'
 import { parseRoute } from './router'
-import { Method, RouteHandler } from './types'
+import { Method, RouteHandler, Hook } from './types'
 
 const handlers: RouteHandler[] = []
+const hooks: Hook[] = []
 
 export const getAllRouteHandlers = (): RouteHandler[] => {
   return handlers
 }
 
+export const getAllHooks = (): Hook[] => {
+  return hooks
+}
+
 const addHandler = (routeHandler: RouteHandler) => {
   handlers.push(routeHandler)
+}
+
+const addHeaders = (hook: Hook) => {
+  hooks.push(hook)
+}
+
+export const hook = (event: Hook['event'], hook: Hook['hook']): ClassDecorator => {
+  return (target) => {
+    addHeaders({
+      event,
+      proto: target,
+      hook,
+    })
+  }
 }
 
 export const route = (path: string, method: AcceptedMethod = '*'): MethodDecorator => {
