@@ -2,7 +2,7 @@
 //-- /path/to/something
 //-- /path/:id/something/:other
 
-import { ParsedRoute } from './types'
+import { ParsedRoute, RouteValues } from './types'
 
 export const parseRoute = (path: string): ParsedRoute => {
   const parts = path.split('/').filter(Boolean)
@@ -34,10 +34,8 @@ export const pathMathesRoute = (path: string, route: ParsedRoute): boolean => {
   return !!path.match(route.regex)
 }
 
-export type RouteValues = { [key: string]: string }
-
 export const getPathParams = (path: string, route: ParsedRoute) => {
-  const params: RouteValues = {}
+  const params: RouteValues<undefined> = {}
   const matches = route.regex.exec(path) ?? []
 
   for (let i = 1; i < matches.length; i++) {
