@@ -1,7 +1,14 @@
 # Verbose-proxy
 
-Simple webserver that can act as a proxy as well, to just intercept and see what
-a request looks like, both in terms of request and response
+A very useful simple http server that responds to any web request and
+prints details about it to the console and responds with an appropriate 200 msg etc
+
+It's simple to run and nice when you want to:
+
+- debug a web request that might not be happening in a browser
+- debug a web hook
+- debug the exchange between two servers since you can use it as a sort of a simple MITM
+  proxy when debugging stuff
 
 By default it runs a little fake server that can return a customized response. See
 'dummy server' section below
@@ -14,7 +21,7 @@ You don't actually have to install it, you can simply run it via:
 npx verbose-proxy
 ```
 
-Or you can install it globallyo
+Or you can install it globally
 
 ```sh
 npm i -g verbose-proxy

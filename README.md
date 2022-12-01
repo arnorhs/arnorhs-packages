@@ -9,7 +9,21 @@ I felt guilty about abandoning them completely, but they're also easy to lose tr
 moved them into this repo, updated some of them, typed them up in typescript made made a few
 other improvements.
 
+You can view the docs here: [https://arnorhs-packages.netlify.app/](arnorhs-packages docs)
+
 ## Overview
+
+### [verbose-proxy](/pkg/verbose-proxy)
+
+A very useful simple http server that responds to any web request and
+prints details about it to the console and responds with an appropriate 200 msg etc
+
+It's simple to run and nice when you want to:
+
+- debug a web request that might not be happening in a browser
+- debug a web hook
+- debug the exchange between two servers since you can use it as a sort of a simple MITM
+  proxy when debugging stuff
 
 ### [fi](/pkg/fi)
 
@@ -24,11 +38,6 @@ A thing to handle web requests
 A simple search term indexer based on [Natural's TfIdf](http://naturalnode.github.io/natural/tfidf.html). Basically
 provides a more userfriendly API around that library.
 
-### [verbose-proxy](/pkg/verbose-proxy)
-
-A simple development server / proxy server / echo server that is useful for just seeing incoming and
-outgoing requests and responses in APIs etc
-
 ## Packages of limited value - here for legacy
 
 ### [bnch](/pkg/bnch/)
@@ -42,14 +51,6 @@ Implementation of the fastest number sorting algorithm on the planet. Probably.
 ### [introsort](/pkg/introsort)
 
 Introsort algorithm implemented in Javascript.
-
-### [sarray](/pkg/sarray)
-
-Sorted array. Basically keeps its sorting through additions. Internally uses [sset](/pkg/sset)
-
-### [sset](/pkg/sset)
-
-Once upon a time, there were no sets in javascript. Back then, this might have seemed useful
 
 ## Contributions
 
