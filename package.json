@@ -12,7 +12,6 @@
     "node-index": "yarn workspace node-index",
     "incoming-handler": "yarn workspace incoming-handler",
     "verbose-proxy": "yarn workspace verbose-proxy",
-
     "test": "yarn lerna run test",
     "docs": "yarn workspace docs",
     "build:docs": "./scripts/update-docs.sh && yarn docs build",
@@ -21,7 +20,7 @@
   "devDependencies": {
     "deepmerge": "^4.2.2",
     "degit": "^2.8.4",
-    "lerna": "^4.0.0"
+    "lerna": "6"
   },
   "workspaces": [
     "pkg/*",
